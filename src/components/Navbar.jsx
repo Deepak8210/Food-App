@@ -11,7 +11,7 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { setSearch } from "../redux/slices/SearchSlice";
-import axios from "axios";
+
 import {
   removeFromCart,
   incrementQty,
@@ -32,42 +32,6 @@ import {
 } from "../utils/menuShow/menuShow";
 
 const Navbar = () => {
-  const [credentials, setCredentials] = useState({
-    fullname: "",
-    email: "",
-    password: "",
-  });
-
-  //onChangeHandler
-  const onChangeHandler = (e) => {
-    setCredentials((prev) => {
-      return { ...prev, [e.target.name]: e.target.value };
-    });
-  };
-
-  const registerHandler = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post("http://localhost:3000/user/register", {
-        fullname: credentials.fullname,
-        email: credentials.email,
-        password: credentials.password,
-      });
-
-      console.log(response);
-
-      // Assuming the response contains JSON data
-      // if (response.status === 200) {
-      //   console.log("registered");
-      //    navigate("/api/v1/login");
-      // }
-    } catch (error) {
-      // Handle errors, such as network issues or server-side errors
-      // setErrorMsg(error.response.data.message);
-      console.log(error);
-    }
-  };
-
   const search = useSelector((state) => state.search.search);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -119,43 +83,10 @@ const Navbar = () => {
         <div className="relative w-fit mx-auto">
           <Link
             to={"/"}
-            className="text-lg font-semibold link-underline-before w-fit "
+            className="text-2xl font-semibold  font-Poppins tracking-[1.5rem] w-fit text-center "
           >
-            Home
+            Restraunt
           </Link>
-        </div>
-        <div className="relative w-fit mx-auto">
-          <a
-            href="#shortMenu"
-            className="text-lg font-semibold link-underline-before w-fit "
-          >
-            Menu
-          </a>
-        </div>
-        <div className="relative w-fit mx-auto">
-          <Link
-            to={"/shop"}
-            className="text-lg font-semibold link-underline-before w-fit "
-          >
-            Shop
-          </Link>
-        </div>
-        <div className="relative w-fit mx-auto">
-          <a
-            href="#services"
-            className="text-lg font-semibold link-underline-before w-fit "
-          >
-            About
-          </a>
-        </div>
-
-        <div className="relative w-fit mx-auto">
-          <a
-            href="#newsletter"
-            className="text-lg font-semibold link-underline-before w-fit"
-          >
-            Contact
-          </a>
         </div>
       </div>
       <div className="contact h-full hidden xl:flex items-center">
