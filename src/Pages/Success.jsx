@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import { BsFillPatchCheckFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { PropagateLoader } from "react-spinners";
+import { removeAllFromCart } from "../redux/slices/CartSlice";
+import { useDispatch } from "react-redux";
 
 const Success = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -26,7 +29,9 @@ const Success = () => {
             ships.
           </p>
           <button
-            onClick={() => navigate("/")}
+            onClick={() => {
+              navigate("/"), dispatch(removeAllFromCart());
+            }}
             className="px-4 py-1.5 rounded-md bg-foodYellow hover:bg-[#c39b36] font-semibold font-Poppins active:scale-95 duration-200"
           >
             Back to Home

@@ -247,7 +247,7 @@ const Navbar = () => {
                 Items: {itemsQty}
               </h6>
               <h3 className="text-black font-bold text-xl">
-                Subtotal: {subTotal}
+                Subtotal: {subTotal.toFixed(2)}
               </h3>
             </div>
             <button

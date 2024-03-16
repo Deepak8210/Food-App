@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import menuBg from "../assets/images/menuBg.jpeg";
 import Navbar from "../components/Navbar";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Footer from "../components/Footer";
 import cartimg from "../assets/images/cart.gif";
 
 const Checkout = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -185,13 +186,15 @@ const Checkout = () => {
                       <h6 className="font-thin">{qty}</h6>
                     </div>
 
-                    <h4 className="font-semibold">${qty * price}</h4>
+                    <h4 className="font-semibold">
+                      ${(qty * price).toFixed(2)}
+                    </h4>
                   </div>
                 ))}
               </div>
               <div className="flex justify-between mt-4 py-2 border-b-[1px]">
                 <h4 className="font-semibold">Subtotal</h4>
-                <h4 className="font-semibold">${subTotal}</h4>
+                <h4 className="font-semibold">${subTotal.toFixed(2)}</h4>
               </div>
               <div className="flex justify-between py-2 border-b-[1px]">
                 <h4 className="font-semibold">Shipping Charge</h4>
